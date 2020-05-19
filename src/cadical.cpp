@@ -511,15 +511,16 @@ int App::main (int argc, char ** argv) {
     if (err) APPERR ("%s", err);
   }
 
+  printf("%.2f ", solver->internal->process_time ());
   solver->section ("result");
   if (res == 10) {
-    printf ("s SATISFIABLE\n");
+    printf ("SATISFIABLE\n");
     if (witness) {
       fflush (stdout);
       print_witness (stdout);
     }
-  } else if (res == 20) printf ("s UNSATISFIABLE\n");
-  else printf ("c UNKNOWN\n");
+  } else if (res == 20) printf ("UNSATISFIABLE\n");
+  else printf ("UNKNOWN\n");
   fflush (stdout);
   solver->statistics ();
   solver->section ("shutting down");
